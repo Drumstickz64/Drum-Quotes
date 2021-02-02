@@ -1,0 +1,24 @@
+{
+	"name": "drum-quotes",
+	"version": "1.0.0",
+	"description": "a super simple app where you press a button and get a random quote.",
+	"main": "index.js",
+	"scripts": {
+		"dev": "parcel src/index.html -d public",
+		"build": "parcel build src/index.html -d public"
+	},
+	"keywords": [
+		"quotes"
+	],
+	"author": "Drumstickz64",
+	"license": "MIT",
+	"devDependencies": {
+		"@babel/core": "^7.12.10",
+		"@babel/plugin-transform-runtime": "^7.12.10",
+		"@babel/preset-env": "^7.12.11",
+		"parcel-bundler": "^1.12.4"
+	},
+	"dependencies": {
+		"@babel/runtime": "^7.12.5"
+	}
+}

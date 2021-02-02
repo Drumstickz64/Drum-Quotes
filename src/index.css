@@ -1,0 +1,52 @@
+@import "./_reset.css";
+
+body {
+	color: #fdfdfd;
+	background: #080808;
+	font-family: cursive;
+}
+
+.header {
+	padding: 0.25em;
+}
+
+.logo {
+	font-size: 1.6rem;
+}
+
+.container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	text-align: center;
+}
+
+.quote {
+	padding: 2.5em 1em;
+}
+
+.btn {
+	display: inline-block;
+	font-size: 1.6rem;
+	text-transform: capitalize;
+	padding: 0.25em 0.5em;
+	background: #fdfdfd;
+	color: #080808;
+	border: none;
+	border-radius: 9999px;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.btn:focus {
+	outline: none;
+	box-shadow: 0 0 3px 0.05em #00d398;
+}
+
+.btn:not(:disabled):active {
+	transform: scale(0.95);
+	-ms-filter: brightness(0.85);
+	filter: brightness(0.85);
+}
