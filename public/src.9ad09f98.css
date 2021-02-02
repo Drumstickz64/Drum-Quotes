@@ -75,11 +75,17 @@ select {
 body {
 	color: #fdfdfd;
 	background: #080808;
-	font-family: cursive;
+	font-family: "Times New Roman", Sans-Serif;
+}
+
+::selection {
+	background: white;
+	color: black;
 }
 
 .header {
 	padding: 0.25em;
+	font-family: cursive;
 }
 
 .logo {
@@ -92,6 +98,7 @@ body {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	width: 100%;
+	margin-top: 0.5em;
 	text-align: center;
 }
 
