@@ -1,6 +1,6 @@
-# drum-quotes
+# Drum-Quotes
 a super simple app where you press a button and get a random quote
 
 ## Made with
-Parcel
-Quoteable API
+- Parcel
+- Quoteable API
