@@ -45,9 +45,9 @@ async function handleClick() {
 async function main() {
 	setInterval(async () => {
 		quoteList.push(await fetchRandomQuote());
+		quoteEl.textContent = "Press a button to get a quote";
+		getQuoteBtnEl.addEventListener("click", handleClick);
 	}, 1000);
-	quoteEl.textContent = "Press a button to get a quote";
-	getQuoteBtnEl.addEventListener("click", handleClick);
 }
 
 main();
