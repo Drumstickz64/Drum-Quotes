@@ -921,7 +921,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var quoteEl = document.querySelector(".quote");
 var getQuoteBtnEl = document.querySelector("#get-quote-btn");
 var QUOTES_API = "https://api.quotable.io/random";
-var FAILED_FETCH_MSG = "failed to get quote, sorry :/";
+var FAILED_FETCH_MSG = "failed to get quotes, please try again :)";
+var quoteList = [];
 
 function fetchRandomQuote() {
   return _fetchRandomQuote.apply(this, arguments);
@@ -929,7 +930,7 @@ function fetchRandomQuote() {
 
 function _fetchRandomQuote() {
   _fetchRandomQuote = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
-    var response;
+    var response, data;
     return _regenerator.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -953,19 +954,21 @@ function _fetchRandomQuote() {
             return response.json();
 
           case 8:
-            return _context.abrupt("return", _context.sent);
+            data = _context.sent;
+            console.log(data);
+            return _context.abrupt("return", data);
 
-          case 11:
-            _context.prev = 11;
+          case 13:
+            _context.prev = 13;
             _context.t0 = _context["catch"](0);
             return _context.abrupt("return", null);
 
-          case 14:
+          case 16:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 11]]);
+    }, _callee, null, [[0, 13]]);
   }));
   return _fetchRandomQuote.apply(this, arguments);
 }
@@ -988,24 +991,20 @@ function _handleClick() {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            _context2.next = 2;
-            return fetchRandomQuote();
+            quoteObj = quoteList.shift();
 
-          case 2:
-            quoteObj = _context2.sent;
-
-            if (!(quoteObj === null)) {
-              _context2.next = 6;
+            if (quoteObj) {
+              _context2.next = 4;
               break;
             }
 
             quoteEl.textContent = FAILED_FETCH_MSG;
             return _context2.abrupt("return");
 
-          case 6:
+          case 4:
             updateQuoteEl(quoteObj);
 
-          case 7:
+          case 5:
           case "end":
             return _context2.stop();
         }
@@ -1015,8 +1014,52 @@ function _handleClick() {
   return _handleClick.apply(this, arguments);
 }
 
-getQuoteBtnEl.addEventListener("click", handleClick);
-},{"@babel/runtime/regenerator":"../node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"../node_modules/@babel/runtime/helpers/asyncToGenerator.js"}],"../node_modules/.pnpm/parcel-bundler@1.12.4/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+function main() {
+  return _main.apply(this, arguments);
+}
+
+function _main() {
+  _main = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee4() {
+    return _regenerator.default.wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            setInterval( /*#__PURE__*/(0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3() {
+              return _regenerator.default.wrap(function _callee3$(_context3) {
+                while (1) {
+                  switch (_context3.prev = _context3.next) {
+                    case 0:
+                      _context3.t0 = quoteList;
+                      _context3.next = 3;
+                      return fetchRandomQuote();
+
+                    case 3:
+                      _context3.t1 = _context3.sent;
+
+                      _context3.t0.push.call(_context3.t0, _context3.t1);
+
+                    case 5:
+                    case "end":
+                      return _context3.stop();
+                  }
+                }
+              }, _callee3);
+            })), 1000);
+            quoteEl.textContent = "Press a button to get a quote";
+            getQuoteBtnEl.addEventListener("click", handleClick);
+
+          case 3:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
+  }));
+  return _main.apply(this, arguments);
+}
+
+main();
+},{"@babel/runtime/regenerator":"../node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"../node_modules/@babel/runtime/helpers/asyncToGenerator.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1044,7 +1087,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51208" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57848" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -1220,5 +1263,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/.pnpm/parcel-bundler@1.12.4/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
 //# sourceMappingURL=/src.e31bb0bc.js.map

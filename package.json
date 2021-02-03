@@ -4,8 +4,8 @@
 	"description": "a super simple app where you press a button and get a random quote.",
 	"main": "index.js",
 	"scripts": {
-		"dev": "parcel src/index.html -d public",
-		"build": "parcel build src/index.html -d public"
+		"dev": "yarn parcel src/index.html -d public",
+		"build": "yarn parcel build src/index.html -d public"
 	},
 	"keywords": [
 		"quotes"

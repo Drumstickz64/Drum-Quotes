@@ -2,7 +2,9 @@ const quoteEl = document.querySelector(".quote");
 const getQuoteBtnEl = document.querySelector("#get-quote-btn");
 
 const QUOTES_API = "https://api.quotable.io/random";
-const FAILED_FETCH_MSG = "failed to get quote, sorry :/";
+const FAILED_FETCH_MSG = "failed to get quotes, please try again :)";
+
+let quoteList = [];
 
 async function fetchRandomQuote() {
 	try {
@@ -12,7 +14,9 @@ async function fetchRandomQuote() {
 			throw Error;
 		}
 		
-		return await response.json();
+		const data = await response.json();
+		console.log(data);
+		return data;
 		
 	} catch (err) {
 		return null;
@@ -27,9 +31,9 @@ function updateQuoteEl(quoteObj) {
 }
 
 async function handleClick() {
-	const quoteObj = await fetchRandomQuote();
+	const quoteObj = quoteList.shift();
 	
-	if (quoteObj === null) {
+	if (!quoteObj) {
 		quoteEl.textContent = FAILED_FETCH_MSG;
 		return;
 	}
@@ -37,4 +41,13 @@ async function handleClick() {
 	updateQuoteEl(quoteObj);
 }
 
-getQuoteBtnEl.addEventListener("click", handleClick);
+
+async function main() {
+	setInterval(async () => {
+		quoteList.push(await fetchRandomQuote());
+	}, 1000);
+	quoteEl.textContent = "Press a button to get a quote";
+	getQuoteBtnEl.addEventListener("click", handleClick);
+}
+
+main();
