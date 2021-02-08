@@ -921,7 +921,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var quoteEl = document.querySelector(".quote");
 var getQuoteBtnEl = document.querySelector("#get-quote-btn");
 var QUOTES_API = "https://api.quotable.io/random";
-var FAILED_FETCH_MSG = "failed to get quotes, please try again :)";
 var quoteList = [];
 
 function fetchRandomQuote() {
@@ -930,7 +929,7 @@ function fetchRandomQuote() {
 
 function _fetchRandomQuote() {
   _fetchRandomQuote = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
-    var response, data;
+    var response;
     return _regenerator.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -954,21 +953,20 @@ function _fetchRandomQuote() {
             return response.json();
 
           case 8:
-            data = _context.sent;
-            console.log(data);
-            return _context.abrupt("return", data);
+            return _context.abrupt("return", _context.sent);
 
-          case 13:
-            _context.prev = 13;
+          case 11:
+            _context.prev = 11;
             _context.t0 = _context["catch"](0);
+            quoteEl.textContent = "failed to fetch quote :( please try again";
             return _context.abrupt("return", null);
 
-          case 16:
+          case 15:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 13]]);
+    }, _callee, null, [[0, 11]]);
   }));
   return _fetchRandomQuote.apply(this, arguments);
 }
@@ -998,7 +996,7 @@ function _handleClick() {
               break;
             }
 
-            quoteEl.textContent = FAILED_FETCH_MSG;
+            quoteEl.textContent = "quote not loaded yet";
             return _context2.abrupt("return");
 
           case 4:
@@ -1024,6 +1022,17 @@ function _main() {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
+            _context4.t0 = quoteList;
+            _context4.next = 3;
+            return fetchRandomQuote();
+
+          case 3:
+            _context4.t1 = _context4.sent;
+
+            _context4.t0.push.call(_context4.t0, _context4.t1);
+
+            quoteEl.textContent = "Press a button to get a quote";
+            getQuoteBtnEl.addEventListener("click", handleClick);
             setInterval( /*#__PURE__*/(0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3() {
               return _regenerator.default.wrap(function _callee3$(_context3) {
                 while (1) {
@@ -1045,10 +1054,8 @@ function _main() {
                 }
               }, _callee3);
             })), 1000);
-            quoteEl.textContent = "Press a button to get a quote";
-            getQuoteBtnEl.addEventListener("click", handleClick);
 
-          case 3:
+          case 8:
           case "end":
             return _context4.stop();
         }
@@ -1087,7 +1094,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57848" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33099" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
